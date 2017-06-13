@@ -4,11 +4,21 @@
 \usepackage{amssymb}
 \usepackage{bm}
 
+\newtheorem{theorem}{Theorem}
+
 \newcommand{\x}{\textbf{x}}
 \newcommand{\y}{\textbf{y}}
 \newcommand{\X}{\textbf{X}}
 \newcommand{\Y}{\textbf{Y}}
 \newcommand{\F}{\textbf{F}}
+\newcommand{\f}{\textbf{f}}
+\newcommand{\U}{\textbf{U}}
+\newcommand{\V}{\textbf{V}}
+\newcommand{\C}{\textbf{C}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\E}{\textbf{E}}
+\newcommand{\I}{\textbf{I}}
+\newcommand{\R}{\textbf{R}}
 \newcommand{\Chi}{\boldsymbol{\chi}}
 \newcommand{\del}{\nabla}
 \newcommand{\eqdef}{:=}
@@ -16,6 +26,16 @@
 \newcommand{\bld}[1]{\textbf{#1}}
 
 \begin{document}
+
+\begin{titlepage}
+	\title{Notes on:\\The Mechanics and Thermodynamics of Continua}
+	\date{\today}
+	\maketitle
+\end{titlepage}	
+\tableofcontents
+\newpage
+	
+	
 \section{Motion of a Body}
 $B$ is a reference body containing points $\X$ which are material points.
 There is a one-to-one function
@@ -27,17 +47,17 @@ Region occupied by body $B$ at time $t$ is
 $$\curly{B}_t = \Chi_t(B)$$
 is the deformed body at time $t$.
 		
-\paragraph{Convection of Sets with the Body} $A$ is a material set. Then \textbf{deforms to} $\curly{A}_t$ at time $t$. 
+\subsection{Convection of Sets with the Body} $A$ is a material set. Then \textbf{deforms to} $\curly{A}_t$ at time $t$. 
 $\curly{A}_t$ \textbf{convects with the body} if there is a set $A$ of material points such that
-$$\curly{A}_t = \Chi_T(A)$$ for all $t$.
+$$\curly{A}_t = \Chi_t(A)$$ for all $t$.
 Note that material cannot cross the boundary of a spatial set which convects with the body. Also note that if $\X$ is on $\partial B$ (boundary), then $\Chi(\X,t)$ is on $\partial \curly{B}_t$ for all time $t$ and conversely.
 
 \section{The Deformation Gradient}
 The \textbf{Deformation gradient} of a body is $$\textbf{F} = \del \Chi, \hspace{1cm} F_{ij} = \frac{\partial \chi_i}{\partial X_j},$$ the Jacobian matrix of $\x = \x(\X)$.
 As above
 $$J = \det \textbf{F} > 0.$$
-
-\paragraph{Homegeneous Deformations} Fix time $t$ so that $$\Chi(\X) \equiv \Chi_t(\X).$$
+\subsection{Approximation of a Deformation by a Homogeneous Deformation}
+\subsubsection{Homegeneous Deformations} Fix time $t$ so that $$\Chi(\X) \equiv \Chi_t(\X).$$
 $\Chi$ is a \textbf{homogeneous deformation} if $\textbf{F}(\X) \equiv \textbf{F}(\X,t)$ is independent of $\X$. So
 $$\Chi(\X) - \Chi(\bld{Y}) = \bld{F}(\X - \bld{Y})$$
 for \bld{all} material points $\X$ and $\bld{Y}$. By the above, \underline{$\bld{F}$ maps material vectors to spatial vectors.} Then, also, $\X - \bld{Y} = \bld{F}^{-1}[\Chi(\X) - \Chi(\bld{Y})]$ so that $\bld{F}^{-1}$ maps spatial vectors too material vectors. Taking the inner product with a spatial vector $\bld{s}$ gives
@@ -48,19 +68,20 @@ Summarizing the mapping properties:
 	\item $\F^{-1}$ and $\F^T$ map spatial vectors to material vectors
 \end{enumerate}
 
-\paragraph{General Deformations}
+\subsubsection{General Deformations}
 Let $\Chi_t$ be an arbitrary deformation. Taylor expanding the deformation about material point $\X$ gives 
-$$\underline{\Chi_t(\Y) - \Chi(\X) = \F(\X,t)(\Y - \X)} + o(|\Y - \X) \hspace{1cm} as\space |\Y - \X| \to 0$$. Therefore $\F(\X,t)(\Y - \X)$ is an approximation of $\Chi_t(\Y) - \Chi(\X)$. Also, since $\X$ is fixed in the Taylor expansion, $\F(\X,t)$ is constant. Thus
+$$\underline{\Chi_t(\Y) - \Chi(\X) = \F(\X,t)(\Y - \X)} + o(|\Y - \X) \hspace{1cm} \text{as } |\Y - \X| \to 0.$$ Therefore, $\F(\X,t)(\Y - \X)$ is an approximation of $\Chi_t(\Y) - \Chi(\X)$. Also, since $\X$ is fixed in the Taylor expansion, $\F(\X,t)$ is constant. Thus
 the underlined portion is the second definition of a homogeneous deformation. Therefore, \emph{within a neighborhood of a material point $\X$ and to within an error of $o(|\Y -\X|)$, a deformation behaves like a homogeneous deformation.}\\
 So with $o(|\Y - \X|)$ small, we have:
 \begin{enumerate}
-	\item $F(\X,t)$ can be thought of as a mapping of an infinitesimal neighborhood of $\X$ in the reference body to an infinitesimal neighborhood of $\x - \Chi_t(\X)$ in the deformed body.
-	\item This gives an asymptotic meaning to the formal relation
+	\item (M1) $F(\X,t)$ can be thought of as a mapping of an infinitesimal neighborhood of $\X$ in the reference body to an infinitesimal neighborhood of $\x - \Chi_t(\X)$ in the deformed body.
+	\item (M2) This gives an asymptotic meaning to the formal relation
 	$$\bld{dx} = \F(\X,t)\bld{dX}$$
 \end{enumerate}
 Now, we have that the mapping properties for a homogeneous deformation hold pointwise for the deformation gradient in an arbitrary deformation. For example, for a given $\X$, the linear transformation $\F(\X,t)$ associates with each material vector $\bld{m}$ a spatial vector $\bld{s} = \F(\X,t)\bld{m}$.
 
-\paragraph{Convection of Geometric Quantities} Define the temporally constant material vector field $\textbf{f}_R$ associated with a given spatial vector file $\textbf{f}$ by
+\subsection{Convection of Geometric Quantities} 
+\subsubsection{Infinitesimal Fibers}Define the temporally constant material vector field $\textbf{f}_R$ associated with a given spatial vector file $\textbf{f}$ by
 \[
 \textbf{f}(\x,t) = \F(\X,t)\textbf{f}_R(\X) \hspace{1cm} \x = \Chi_t(\X) \tag{6.8} \label{eq:6.8}
 \]
@@ -72,6 +93,93 @@ equation~\ref{eq:6.8} becomes
 \epsilon\textbf{f}(\x,t) = \F(\X,t)(\epsilon\textbf{f}_R(\X)) \tag{6.9} \label{eq:6.9}
 \] 
 for $\epsilon > 0$. This can be considered as describing the local deformation when the neighborhood of $\X$ under consideration is magnified by a factor of $\epsilon^{-1}$.\\
+
+In equation~\ref{eq:6.8}, $\f_R(\X)$ is an \textbf{infinitesimal undeformed fiber} and $\f(\x,t) = \F(\X, t)\f_R(\X)$ is the corresponding \textbf{(infinitesimal) deformed fiber}. We can see the deformed fiber as \textbf{embedded} in the deforming body $\curly{B}_t$ and we say $\f(\x,t)$ convects with the body.\\
+
+\textbf{f convects with the body} and \textbf{f is convecting} mean that there is a fixed (time independent) material vector field $\f_R$(\X) such that equation~\ref{eq:6.8} holds.\\
+
+\subsubsection{Curves}
+$C$ is a \textbf{material curve} with parameterization $\hat{\X}(\lambda)$, $\lambda\in [\lambda_0,\lambda_1]$ which does not intersect itself. The corresponding \textbf{spatial curve} is $\curly{C}_t = \Chi_t(C)$. Note the time-dependent parameterization. Then $\curly{C}_t$ is a curve \textbf{embedded} in the deforming body.
+
+\subsubsection{Tangent Vectors}
+Given $\X$ on $C$, the tangent to $C$ at $\X$ is
+\[
+\boldsymbol{\tau}_R(\X) = \frac{d\hat{\X}(\lambda)}{d\lambda} \tag{6.12} \label{eq:6.12}
+\]
+Then the corresponding tangent to $\curly{C}_t$ at $\x$ is
+\[
+\boldsymbol{\tau}(\x,t)= \frac{\partial \hat{\x}_t(\lambda)}{\partial\lambda} \tag{6.13}\label{eq:6.13}
+\]
+which gives
+\[
+\boldsymbol{\tau}(\x,t) = \F(\X,t)\boldsymbol{\tau}_R(\X) \tag{6.15}\label{eq:6.15}
+\]
+
+
+\begin{theorem}[Transformation Law for Tangent Vectors]
+	At each time, the relation (\ref{eq:6.15}) associates with any vector $\boldsymbol{\tau}_R$ at $\X$ a vector $\boldsymbol{\tau}$ at $\x = \Chi_t(\X)$ with the following property: if $\boldsymbol{\tau}_R$ is tangent to a material curve at $\X$, then $\boldsymbol{\tau}$ is tangent to the corresponding deformed curve through $\x$.
+\end{theorem}
+
+\subsubsection{Bases}
+Fix a material basis
+$$\lbrace \textbf{m}_i(\X)\rbrace = \lbrace \textbf{m}_1(\X),\textbf{m}_2(\X),\textbf{m}_3(\X) \rbrace.$$
+Then the associated spatial basis is
+\[
+\lbrace \textbf{s}_i(\x,t)\rbrace = \lbrace \F(\X,t)\textbf{m}_i(\X)\rbrace \tag{6.16}\label{eq:6.16}
+\]
+
+at $\x = \Chi(\X, t)$.
+This spatial basis convects with the body, ie is embedded in the deforming body.
+
+\section{Stretch, Strain, and Rotation}
+\subsection{Stretch and Rotation Tensors. Strain}
+The polar decomposition (rotation $\textbf{R}$ and positive-definite symmetric tensors \textbf{U} and \textbf{V}) of the deformation gradient:
+\[
+\F = \textbf{R}\textbf{U} = \textbf{V}\textbf{R} \tag{7.1}\label{eq:7.10}
+\]
+
+\textbf{U} is the \textbf{right stretch tensor} and \textbf{V} is the \textbf{right stretch tensor}.
+
+The following is good for theoretical but difficult in application
+\[
+\centering
+\textbf{U} = \sqrt{\F^T\F} \hspace{2cm} \text{and} \hspace{2cm}\textbf{V} = \sqrt{\F\F^T} \tag{7.2} \label{eq:7.2}
+\]
+
+\textbf{Left and Right Cauchy-Green (deformation) tensors C and B}:
+\[
+\begin{array}{lr}
+\textbf{C} = \textbf{U}^2 = \F^T\F,  &  C_{ij} = F_{ki}F_{kj} = \frac{\partial \Chi_k}{\partial\X_i}\frac{\partial\Chi_k}{\partial\X_j}\\
+
+\textbf{B} = \textbf{V}^2 = \F\F^T,  &  B_{ij} = F_{ik}F_{jk} = \frac{\partial \Chi_i}{\partial\X_k}\frac{\partial\Chi_j}{\partial\X_k}
+\end{array} \tag{7.3}\label{eq:7.3}
+\]
+
+Then,
+\[
+\textbf{V} = \textbf{RUR}^T \hspace{1cm} and \hspace{1cm} \textbf{B} = \textbf{RCR}^T \tag{7.4} \label{eq:7.4}
+\]
+
+and
+\[
+\text{\U, \V, \C, and \B\space are symmetric and positive-definite.}\tag{7.5}\label{eq:7.5}
+\]
+
+\textbf{Green-St. Venant strain tensor}:
+\[
+\E 	= \frac{1}{2}(\F^T\F - \I)
+	= \frac{1}{2}(\C - \I)
+	= \frac{1}{2}(\U^2 - \I)\tag{7.6,7.7,7.8}
+\]
+As rotations tensors are orthogonal, \E vanishes when \F is a rotation.
+We now have properties
+\begin{enumerate}
+	\item (M3) \U,\C and \E map material vectors to material vectors
+	\item (M4) \V and \B map spatial vectors to spatial vectors
+	\item (M5) \R maps material vectors to spatial vectors
+\end{enumerate}
+
+\subsection{Fibers. Properties of the Tensors U and C}
 
 
 
