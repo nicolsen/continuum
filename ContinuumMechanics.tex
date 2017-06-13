@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\newcommand{\x}{\textbf{x}}
+\newcommand{\y}{\textbf{y}}
+\newcommand{\X}{\textbf{X}}
+\newcommand{\Y}{\textbf{Y}}
+\newcommand{\F}{\textbf{F}}
+\newcommand{\Chi}{\boldsymbol{\chi}}
+\newcommand{\del}{\nabla}
+\newcommand{\eqdef}{:=}
+\newcommand{\curly}[1]{\mathcal{#1}}
+\newcommand{\bld}[1]{\textbf{#1}}
+
+\begin{document}
+\section{Motion of a Body}
+$B$ is a reference body containing points $\X$ which are material points.
+There is a one-to-one function
+$$\x = \Chi(\X,t)$$
+taking reference material points $\X$ to spatial points $\x$ at time $t$.
+We require $$J(\X,t) \eqdef \det \del \Chi_t(\X) > 0$$
+where J is the volumetric Jacobian of the mapping $\Chi_t$ at $\X$.
+Region occupied by body $B$ at time $t$ is
+$$\curly{B}_t = \Chi_t(B)$$
+is the deformed body at time $t$.
+		
+\paragraph{Convection of Sets with the Body} $A$ is a material set. Then \textbf{deforms to} $\curly{A}_t$ at time $t$. 
+$\curly{A}_t$ \textbf{convects with the body} if there is a set $A$ of material points such that
+$$\curly{A}_t = \Chi_T(A)$$ for all $t$.
+Note that material cannot cross the boundary of a spatial set which convects with the body. Also note that if $\X$ is on $\partial B$ (boundary), then $\Chi(\X,t)$ is on $\partial \curly{B}_t$ for all time $t$ and conversely.
+
+\section{The Deformation Gradient}
+The \textbf{Deformation gradient} of a body is $$\textbf{F} = \del \Chi, \hspace{1cm} F_{ij} = \frac{\partial \chi_i}{\partial X_j},$$ the Jacobian matrix of $\x = \x(\X)$.
+As above
+$$J = \det \textbf{F} > 0.$$
+
+\paragraph{Homegeneous Deformations} Fix time $t$ so that $$\Chi(\X) \equiv \Chi_t(\X).$$
+$\Chi$ is a \textbf{homogeneous deformation} if $\textbf{F}(\X) \equiv \textbf{F}(\X,t)$ is independent of $\X$. So
+$$\Chi(\X) - \Chi(\bld{Y}) = \bld{F}(\X - \bld{Y})$$
+for \bld{all} material points $\X$ and $\bld{Y}$. By the above, \underline{$\bld{F}$ maps material vectors to spatial vectors.} Then, also, $\X - \bld{Y} = \bld{F}^{-1}[\Chi(\X) - \Chi(\bld{Y})]$ so that $\bld{F}^{-1}$ maps spatial vectors too material vectors. Taking the inner product with a spatial vector $\bld{s}$ gives
+$$\bld{s} \cdot [\Chi(\X) -\Chi(\Y)] = \bld{s} \cdot [\F(\X - \Y)]  = (\F^T\bld{s})\cdot(\X - \Y)$$ so that $\F^T$ maps spatial vectors to material vectors.\\
+Summarizing the mapping properties:
+\begin{enumerate}
+	\item $\F$ and $\F^{-T}$ map material vectors to spatial vectors
+	\item $\F^{-1}$ and $\F^T$ map spatial vectors to material vectors
+\end{enumerate}
+
+\paragraph{General Deformations}
+Let $\Chi_t$ be an arbitrary deformation. Taylor expanding the deformation about material point $\X$ gives 
+$$\underline{\Chi_t(\Y) - \Chi(\X) = \F(\X,t)(\Y - \X)} + o(|\Y - \X) \hspace{1cm} as\space |\Y - \X| \to 0$$. Therefore $\F(\X,t)(\Y - \X)$ is an approximation of $\Chi_t(\Y) - \Chi(\X)$. Also, since $\X$ is fixed in the Taylor expansion, $\F(\X,t)$ is constant. Thus
+the underlined portion is the second definition of a homogeneous deformation. Therefore, \emph{within a neighborhood of a material point $\X$ and to within an error of $o(|\Y -\X|)$, a deformation behaves like a homogeneous deformation.}\\
+So with $o(|\Y - \X|)$ small, we have:
+\begin{enumerate}
+	\item $F(\X,t)$ can be thought of as a mapping of an infinitesimal neighborhood of $\X$ in the reference body to an infinitesimal neighborhood of $\x - \Chi_t(\X)$ in the deformed body.
+	\item This gives an asymptotic meaning to the formal relation
+	$$\bld{dx} = \F(\X,t)\bld{dX}$$
+\end{enumerate}
+Now, we have that the mapping properties for a homogeneous deformation hold pointwise for the deformation gradient in an arbitrary deformation. For example, for a given $\X$, the linear transformation $\F(\X,t)$ associates with each material vector $\bld{m}$ a spatial vector $\bld{s} = \F(\X,t)\bld{m}$.
+
+\paragraph{Convection of Geometric Quantities} Define the temporally constant material vector field $\textbf{f}_R$ associated with a given spatial vector file $\textbf{f}$ by
+\[
+\textbf{f}(\x,t) = \F(\X,t)\textbf{f}_R(\X) \hspace{1cm} \x = \Chi_t(\X) \tag{6.8} \label{eq:6.8}
+\]
+ for all $\X$ and $t$.
+
+Now by the above statements about the local homogeneity of deformation, we can see 
+equation~\ref{eq:6.8} becomes
+\[
+\epsilon\textbf{f}(\x,t) = \F(\X,t)(\epsilon\textbf{f}_R(\X)) \tag{6.9} \label{eq:6.9}
+\] 
+for $\epsilon > 0$. This can be considered as describing the local deformation when the neighborhood of $\X$ under consideration is magnified by a factor of $\epsilon^{-1}$.\\
+
+
+
+\end{document}
