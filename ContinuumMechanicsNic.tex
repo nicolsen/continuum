@@ -1,0 +1,313 @@
+\documentclass{article}
+\usepackage[top=1.5in,bottom=1in,left=0.5in,right=0.5in]{geometry}
+\newcommand{\Chi}{\boldsymbol{\chi}}
+
+\input{nicmacros.tex}
+
+\begin{document}
+
+\begin{titlepage}
+	\title{Notes on:\\The Mechanics and Thermodynamics of Continua}
+	\date{\today}
+	\maketitle
+\end{titlepage}	
+\tableofcontents
+\newpage
+	
+	
+\section{Motion of a Body}
+$B$ is a reference body containing points $\X$ which are material points.
+There is a one-to-one function
+$$\x = \Chi(\X,t)$$
+taking reference material points $\X$ to spatial points $\x$ at time $t$.
+We require $$J(\X,t) \eqdef \det \del \Chi_t(\X) > 0$$
+where J is the volumetric Jacobian of the mapping $\Chi_t$ at $\X$.
+Region occupied by body $B$ at time $t$ is
+$$\curly{B}_t = \Chi_t(B)$$
+is the deformed body at time $t$.
+		
+\subsection{Convection of Sets with the Body} $A$ is a material set. Then \textbf{deforms to} $\curly{A}_t$ at time $t$. 
+$\curly{A}_t$ \textbf{convects with the body} if there is a set $A$ of material points such that
+$$\curly{A}_t = \Chi_t(A)$$ for all $t$.
+Note that material cannot cross the boundary of a spatial set which convects with the body. Also note that if $\X$ is on $\partial B$ (boundary), then $\Chi(\X,t)$ is on $\partial \curly{B}_t$ for all time $t$ and conversely.
+
+\section{The Deformation Gradient}
+The \textbf{Deformation gradient} of a body is $$\textbf{F} = \del \Chi, \hspace{1cm} F_{ij} = \frac{\partial \chi_i}{\partial X_j},$$ the Jacobian matrix of $\x = \x(\X)$.
+As above
+$$J = \det \textbf{F} > 0.$$
+\subsection{Approximation of a Deformation by a Homogeneous Deformation}
+\subsubsection{Homegeneous Deformations} Fix time $t$ so that $$\Chi(\X) \equiv \Chi_t(\X).$$
+$\Chi$ is a \textbf{homogeneous deformation} if $\textbf{F}(\X) \equiv \textbf{F}(\X,t)$ is independent of $\X$. So
+$$\Chi(\X) - \Chi(\Y) = \F(\X - \Y)$$
+for \textbf{all} material points $\X$ and $\Y$. By the above, \underline{$\F$ maps material vectors to spatial vectors.} Then, also, $\X - \Y = \F^{-1}[\Chi(\X) - \Chi(\Y)]$ so that $\F^{-1}$ maps spatial vectors too material vectors. Taking the inner product with a spatial vector $\s$ gives
+$$\s \cdot [\Chi(\X) -\Chi(\Y)] = \s \cdot [\F(\X - \Y)]  = (\F^T\s)\cdot(\X - \Y)$$ so that $\F^T$ maps spatial vectors to material vectors.\\
+Summarizing the mapping properties:
+\begin{enumerate}
+	\item $\F$ and $\F^{-T}$ map material vectors to spatial vectors
+	\item $\F^{-1}$ and $\F^T$ map spatial vectors to material vectors
+\end{enumerate}
+
+\subsubsection{General Deformations}
+Let $\Chi_t$ be an arbitrary deformation. Taylor expanding the deformation about material point $\X$ gives 
+$$\underline{\Chi_t(\Y) - \Chi(\X) = \F(\X,t)(\Y - \X)} + o(|\Y - \X) \hspace{1cm} \text{as } |\Y - \X| \to 0.$$ Therefore, $\F(\X,t)(\Y - \X)$ is an approximation of $\Chi_t(\Y) - \Chi(\X)$. Also, since $\X$ is fixed in the Taylor expansion, $\F(\X,t)$ is constant. Thus
+the underlined portion is the second definition of a homogeneous deformation. Therefore, \emph{within a neighborhood of a material point $\X$ and to within an error of $o(|\Y -\X|)$, a deformation behaves like a homogeneous deformation.}\\
+So with $o(|\Y - \X|)$ small, we have:
+\begin{enumerate}
+	\item (M1) $F(\X,t)$ can be thought of as a mapping of an infinitesimal neighborhood of $\X$ in the reference body to an infinitesimal neighborhood of $\x - \Chi_t(\X)$ in the deformed body.
+	\item (M2) This gives an asymptotic meaning to the formal relation
+	$$\textbf{dx} = \F(\X,t)\textbf{dX}$$
+\end{enumerate}
+Now, we have that the mapping properties for a homogeneous deformation hold pointwise for the deformation gradient in an arbitrary deformation. For example, for a given $\X$, the linear transformation $\F(\X,t)$ associates with each material vector $\m$ a spatial vector $\s = \F(\X,t)\m$.
+
+\subsection{Convection of Geometric Quantities} 
+\subsubsection{Infinitesimal Fibers}Define the temporally constant material vector field $\textbf{f}_R$ associated with a given spatial vector file $\textbf{f}$ by
+\[
+\textbf{f}(\x,t) = \F(\X,t)\textbf{f}_R(\X) \hspace{1cm} \x = \Chi_t(\X) \tag{6.8} \label{eq:6.8}
+\]
+ for all $\X$ and $t$.
+
+Now by the above statements about the local homogeneity of deformation, we can see 
+equation~\ref{eq:6.8} becomes
+\[
+\epsilon\textbf{f}(\x,t) = \F(\X,t)(\epsilon\textbf{f}_R(\X)) \tag{6.9} \label{eq:6.9}
+\] 
+for $\epsilon > 0$. This can be considered as describing the local deformation when the neighborhood of $\X$ under consideration is magnified by a factor of $\epsilon^{-1}$.\\
+
+In equation~\ref{eq:6.8}, $\f_R(\X)$ is an \textbf{infinitesimal undeformed fiber} and $\f(\x,t) = \F(\X, t)\f_R(\X)$ is the corresponding \textbf{(infinitesimal) deformed fiber}. We can see the deformed fiber as \textbf{embedded} in the deforming body $\curly{B}_t$ and we say $\f(\x,t)$ convects with the body.\\
+
+\textbf{f convects with the body} and \textbf{f is convecting} mean that there is a fixed (time independent) material vector field $\f_R$(\X) such that equation~\ref{eq:6.8} holds.\\
+
+\subsubsection{Curves}
+$C$ is a \textbf{material curve} with parameterization $\hat{\X}(\lambda)$, $\lambda\in [\lambda_0,\lambda_1]$ which does not intersect itself. The corresponding \textbf{spatial curve} is $\curly{C}_t = \Chi_t(C)$. Note the time-dependent parameterization. Then $\curly{C}_t$ is a curve \textbf{embedded} in the deforming body.
+
+\subsubsection{Tangent Vectors}
+Given $\X$ on $C$, the tangent to $C$ at $\X$ is
+\[
+\boldsymbol{\tau}_R(\X) = \frac{d\hat{\X}(\lambda)}{d\lambda} \tag{6.12} \label{eq:6.12}
+\]
+Then the corresponding tangent to $\curly{C}_t$ at $\x$ is
+\[
+\boldsymbol{\tau}(\x,t)= \frac{\partial \hat{\x}_t(\lambda)}{\partial\lambda} \tag{6.13}\label{eq:6.13}
+\]
+which gives
+\[
+\boldsymbol{\tau}(\x,t) = \F(\X,t)\boldsymbol{\tau}_R(\X) \tag{6.15}\label{eq:6.15}
+\]
+
+
+\begin{theorem}[Transformation Law for Tangent Vectors]
+	At each time, the relation (\ref{eq:6.15}) associates with any vector $\boldsymbol{\tau}_R$ at $\X$ a vector $\boldsymbol{\tau}$ at $\x = \Chi_t(\X)$ with the following property: if $\boldsymbol{\tau}_R$ is tangent to a material curve at $\X$, then $\boldsymbol{\tau}$ is tangent to the corresponding deformed curve through $\x$.
+\end{theorem}
+
+\subsubsection{Bases}
+Fix a material basis
+$$\lbrace \textbf{m}_i(\X)\rbrace = \lbrace \textbf{m}_1(\X),\textbf{m}_2(\X),\textbf{m}_3(\X) \rbrace.$$
+Then the associated spatial basis is
+\[
+\lbrace \textbf{s}_i(\x,t)\rbrace = \lbrace \F(\X,t)\textbf{m}_i(\X)\rbrace \tag{6.16}\label{eq:6.16}
+\]
+
+at $\x = \Chi(\X, t)$.
+This spatial basis convects with the body, ie is embedded in the deforming body.
+
+\section{Stretch, Strain, and Rotation}
+\subsection{Stretch and Rotation Tensors. Strain}
+The polar decomposition (rotation $\textbf{R}$ and positive-definite symmetric tensors \textbf{U} and \textbf{V}) of the deformation gradient:
+\[
+\F = \textbf{R}\textbf{U} = \textbf{V}\textbf{R} \tag{7.1}\label{eq:7.10}
+\]
+
+\textbf{U} is the \textbf{right stretch tensor} and \textbf{V} is the \textbf{right stretch tensor}.
+
+The following is good for theoretical but difficult in application
+\[
+\centering
+\textbf{U} = \sqrt{\F^T\F} \hspace{2cm} \text{and} \hspace{2cm}\textbf{V} = \sqrt{\F\F^T} \tag{7.2} \label{eq:7.2}
+\]
+
+\textbf{Left and Right Cauchy-Green (deformation) tensors C and B}:
+\[
+\begin{array}{lr}
+\textbf{C} = \textbf{U}^2 = \F^T\F,  &  C_{ij} = F_{ki}F_{kj} = \frac{\partial \Chi_k}{\partial\X_i}\frac{\partial\Chi_k}{\partial\X_j}\\
+
+\textbf{B} = \textbf{V}^2 = \F\F^T,  &  B_{ij} = F_{ik}F_{jk} = \frac{\partial \Chi_i}{\partial\X_k}\frac{\partial\Chi_j}{\partial\X_k}
+\end{array} \tag{7.3}\label{eq:7.3}
+\]
+
+Then,
+\[
+\textbf{V} = \textbf{RUR}^T \hspace{1cm} and \hspace{1cm} \textbf{B} = \textbf{RCR}^T \tag{7.4} \label{eq:7.4}
+\]
+
+and
+\[
+\text{\U, \V, \C, and \B\space are symmetric and positive-definite.}\tag{7.5}\label{eq:7.5}
+\]
+
+\textbf{Green - St. Venant strain tensor}:
+\[
+\E 	= \frac{1}{2}(\F^T\F - \I)
+	= \frac{1}{2}(\C - \I)
+	= \frac{1}{2}(\U^2 - \I)\tag{7.6,7.7,7.8}
+\]
+As rotation tensors are orthogonal, $\E$ vanishes when $\F$ is a rotation.
+We now have properties
+\begin{enumerate}
+	\item (M3) $\U$, $\C$, and $\E$ map material vectors to material vectors
+	\item (M4) $\V$ and $\B$ map spatial vectors to spatial vectors
+	\item (M5) $\R$ maps material vectors to spatial vectors
+\end{enumerate}
+
+\subsection{Fibers. Properties of the Tensors U and C}
+\subsubsection{Infinitesimal Fibers}
+Infinitesimal undeformed fibers and $\f_R$ and $\bar{\f}_R$ and corresponding deformed fibers
+\[
+	\f = \F\f_R \hspace{1cm} and \hspace{1cm} \bar{\f} = \F\bar{\f}_R\tag{7.9}\label{eq:7.9}
+\]
+
+Then
+\[
+	\f\cdot\bar{\f} = (\R\U\f_R)\cdot(\R\U\bar{\f}_R) = \U\f_R\cdot\U\bar{\f}_R = \f_R\cdot\U^2\bar{\f}_R
+	 = \f_R\cdot\C\bar{\f}_R\tag{7.11}\label{eq:7.11}
+\]
+
+So,
+\[
+	|\f| = |\U\f_R|\tag{7.12}\label{eq:7.12}
+\]
+
+So applying the right stretch tensor gives the deformed length of an infinitesimal fiber.\\
+
+Define: $\theta = \angle(\f_R,\bar{\f_R})$ the angle between fibers.
+
+Then,
+by \ref{eq:7.10} and \ref{eq:7.12},
+
+\[
+	\frac{\f\cdot\bar{\f}}{|\f||\bar{\f}} = \frac{\C\f_R\cdot\U\bar{\f}_R}{|\U\f_R||\U\bar{\f}_R|}
+\]
+
+So,
+
+\[
+	\angle(\f,\bar{\f}) = \angle(\U\f_R,\U\bar{\f}_R) \tag{7.13} \label{eq:13}
+\]
+
+so applying the right stretch tensor gives the angle between infinitesimal deformed fibers.
+
+\subsubsection{Finite Fibers}
+Consider material and spatial line segments
+\[
+	\Delta\X = \Y - \X \hspace{1cm} and \hspace{1cm} \Delta\x = \Chi(\Y) - \Chi(\X)
+\]
+with $\Delta\X > 0.$
+
+Then we know 
+\[
+	\Delta\x = \F(\X)\Delta\X + o(|\Delta\X|) \hspace{1cm} as \hspace{1cm} |\Delta\X| \to 0. \tag{7.14}\label{eq:7.14}
+\]
+
+Useful to think of $\Delta\X$ as of an undeformed fiber of finite length $L$ and direction $\e$ at $\X$, so
+\[
+	\Delta\X = L\e, \qquad |\e| = 1\tag{7.15}\label{eq:7.15}
+\]
+
+So the corresponding deformed fiber is
+
+\[
+	\Delta\x = L\F(\X)\e + o(L) \qquad as \qquad L\to 0
+\]
+
+Then the following limit gives the \textbf{stretch vector}
+\[
+	\lim\limits_{L\to 0}\frac{\Delta\x}{L} = \F(\X)\e\tag{7.16}\label{eq:7.16}
+\]
+
+This is called the stretch vector because it is the limiting value of the deformed fiber measured per \textbf{unit length} of the undeformed fiber in direction $\e$.
+
+Thus the \textbf{stretch} is
+\[
+	\lambda = \lim\limits_{L\to 0}\frac{|\Delta\x|}{L} = |\F(\X)\e|\tag{7.17}\label{eq:17}
+\]
+
+From earlier, taking $\f_R=\e$ gives
+\[
+	\lambda = |\U(\X)\e| \qquad \lambda^2 = \e\cdot\C(\X)\e\tag{7.18}\label{eq:7.18}
+\]
+\begin{remark}
+	The right stretch tensor $\U$ determines the stretch $\lambda$ at $\X$ relative to any material direction $\e$ by $\lambda = |\U(\X)\e|$.
+\end{remark}
+
+Now, taking two fibers from $\X$ of the same length $L$ with directions $\e_1$ and $\e_2$.
+Then
+\[
+	\lim\limits_{L\to 0} \left( \frac{(\Delta\x)_1)}{L} \cdot \frac{(\Delta\x)_2}{L} \right)
+	= \lim\limits_{L\to 0} \left( \frac{(\Delta\x)_1)}{L} \right) \cdot \lim\limits_{L\to 0} \left( \frac{(\Delta\x)_2}{L} \right)
+	= \U(\X)\e_1\cdot\U(\X)\e_2
+	= \e_1\cdot\C(\X)\e_2 \tag{7.21-7.22}\label{eq:7.21}
+\]
+
+\begin{remark}
+	The right Cauchy-Green tensor $\C(\X)$ characterizes inner products of stretch vectors at $\x$
+\end{remark}
+
+Let $\theta_L$ be the angle between the deformed fibers $(\Delta\x)_1$ and $(\Delta\x)_2$, as before.
+Then,
+\[
+	\theta_L = \angle((\Delta\x)_1,(\Delta\x)_2) = \cos^{-1}\left( \frac{(\Delta\x)_1 \cdot (\Delta\x)_2}{|(\Delta\x)_1||(\Delta\x)_2|} \right)
+\]
+After math cheese,
+\[
+	\lim\limits_{L\to 0}\theta_L = \angle(\U(\X)\e_1, \U(\X)\e_2). \tag{7.23}\label{eq:7.23}
+\]
+
+\begin{remark}
+	Let $(\Delta\x)_1$ and $(\Delta\x)_2$ be the deformed fibers corresponding to fibers at $\X$ of finite length $L$ in directions $\e_1$ and $\e_2$. Then, as $L\to 0$, the angle between
+	$$\frac{(\Delta\x_1)}{L} \; \text{and} \; \frac{(\Delta\x)_2}{L}$$
+	tends to the angle between $\U(\X)\e_1$ and $\U(\X)\e_2$.
+\end{remark}
+
+\subsection{Principle Stretches and Principal Directions}
+As $\U$ and $\V$ are symmetric and positive-definite, the have spectral representations of the form
+\[
+	\U = \lambda_i\r_i \otimes\r_i = \sum_{i=1}^{3}\lambda_i\r_i\otimes\r_i \qquad
+	\V =  \lambda_i\l_i\otimes\l_i
+\]
+where
+\begin{enumerate}
+	\item $\lambda_i > 0 \, \forall i$, the \textbf{principal stretches} are eigenvalues of $\U$ and also of $\V$.
+	\item $\r_1$, $\r_2$, and $\r_3$ are the \textbf{right principal directions} and eigenvectors of $\U$
+	$$\U\r_i = \lambda_i\r_i \qquad \text{(no sum on i)}$$
+	\item $\l_1$, $\l_2$, and $\l_3$ are the \textbf{left principal directions} and the eigenvectors of $\V$
+	$$\V\l_i = \lambda_i\l_i \qquad \text{(no sum on i)}$$
+\end{enumerate}
+
+Thus, $\V = \R\U\R^T$ gives
+\[
+	\sum_{i=1}^{3}\lambda_i\R\r_i\otimes\R\r_i = \sum_{i=1}^{3}\lambda\l_i\otimes\l_i
+\]
+Therefore,
+\[
+	\l_i = \R\r_i, \qquad i =1,2,3\tag{7.27}\label{eq:7.27}
+\]
+
+We then have the following expressions using the principal stretches and directions:
+\[
+	\left.
+	\begin{array}{l}
+	\C = \lambda_i^2\r_i\otimes\r_i\\
+	\B = \lambda_i^2\l_i\otimes\l_i\\
+	\E = \frac{1}{2}(\lambda_i^2 - \I)\r_i\otimes\r_i
+	\end{array}
+	\right\rbrace\tag{7.28}\label{eq:7.28}
+\]
+where each is summed over $i$.
+
+Also,
+\[
+	\F = \R\U = \lambda_i\l_i\otimes\r_i 
+\]
+
+Also the logarithmic strain tensors of Hencky are scary.
+
+\end{document}
