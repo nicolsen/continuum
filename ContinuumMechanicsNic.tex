@@ -311,7 +311,44 @@ Also,
 Also the logarithmic strain tensors of Hencky are scary.
 
 \section{Deformation of Volume and Area}
-See other notes for deformation of normals and deformation of volume
+Time is fixed throughout this section.
+\subsection{Deformation and Normals}
+Given: $\X$, $\x = \Chi(\X)$, material surface $S$ containing $\X$, spatial surface $\curly{S} = \Chi(S)$ containing $\x$, and nonzero material normal $\n_R$ with
+\[
+\n_R\cdot\t_R = 0 \; \forall \, \t_R\text{ tangent to S at } \X .\tag{8.1}\label{eq:8.1}
+\]
+Then after some work, the corresponding spatial normal to $\curly{S}$ at $\x$ is
+\[
+\n = \F^{-T}(\X)\n_R\tag{8.4}\label{eq:8.4}
+\]
+
+\subsection{Deformation of Volume}
+Consider basis $\lbrace \F(\X)\e_i\rbrace$, then the volume spanned by these vectors is
+\[
+(\F\e_1\times\F\e_2)\cdot\F\e_3 = \det \F = J > 0 \tag{8.5}\label{eq:8.5}
+\]
+
+Now, define the deformed fiber at $\x = \Chi(\X)$ deformed from fiber of length $l$ in direction $\e_i$ at $\X_i$ by
+\[
+\boldsymbol{\delta}_i(l) = \Chi(\X + l\e_i) - \Chi(\X)\tag{8.6}\label{eq:8.6}
+\]
+
+
+Now, define the volumes spanned by undeformed and deformed fibers
+\[
+\Delta\nu_R(l) \eqdef l^3 (\e_1\times\e_2)\cdot\e_3 = l^3 \qquad and
+\qquad \Delta\nu(l) \eqdef (\boldsymbol{\delta}_1(l)\times\boldsymbol{\delta}_2(l))\cdot\boldsymbol{\delta}_3(l)
+\]
+
+Taylor expanding gives
+\[
+\boldsymbol{\delta}_i(l) = l\F\e_i + o(l) \tag{8.8}\label{eq:8.8}
+\]
+
+so that:
+\begin{remark}
+	For small undeformed fibers making up a cube of volume $\Delta\nu_R$, the corresponding deformed fiber parallelepiped has volume approximately $J\Delta\nu_R = \det \F\Delta\nu_R$.
+\end{remark}
 \subsection{Deformation of Area}
 
 Let plane $\Pi_R$ with normal $\n_R$ at material point $\X$ with $|\n_R| = 1$, choose basis $\lbrace \e_i \rbrace$ such that $\e_3 = \n_R$.
