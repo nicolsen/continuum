@@ -36,7 +36,7 @@ The \textbf{Deformation gradient} of a body is $$\textbf{F} = \del \Chi, \hspace
 As above
 $$J = \det \textbf{F} > 0.$$
 \subsection{Approximation of a Deformation by a Homogeneous Deformation}
-\subsubsection{Homegeneous Deformations} Fix time $t$ so that $$\Chi(\X) \equiv \Chi_t(\X).$$
+\subsubsection{Homogeneous Deformations} Fix time $t$ so that $$\Chi(\X) \equiv \Chi_t(\X).$$
 $\Chi$ is a \textbf{homogeneous deformation} if $\textbf{F}(\X) \equiv \textbf{F}(\X,t)$ is independent of $\X$. So
 $$\Chi(\X) - \Chi(\Y) = \F(\X - \Y)$$
 for \textbf{all} material points $\X$ and $\Y$. By the above, \underline{$\F$ maps material vectors to spatial vectors.} Then, also, $\X - \Y = \F^{-1}[\Chi(\X) - \Chi(\Y)]$ so that $\F^{-1}$ maps spatial vectors too material vectors. Taking the inner product with a spatial vector $\s$ gives
@@ -588,6 +588,112 @@ Then, $\v$ has only a one nontrivial component: $v_i = \v\cdot\e = \v\cdot\e_i$ 
 \begin{remark}
 	Thus, all together, this means that, up to an additive constant, every velocity field with symmetric gradient and constant is the sum of three velocity fields of the for (10.6) with "axes" mutually orthogonal.
 \end{remark}
+
+\section{Stretching and Spin in an Arbitrary Motion}
+\subsection{Stretching and Spin as Tensor Fields}
+Let $\v$ be a general velocity field. Taylor expanding about arbitrary spatial point $\y$ give
+\[
+	\v(\x) - \v(\y) = \L(\y)(\x - \y) + o(|\x - \y|)\tag{11.1}
+\]
+as $\x\to\y$.
+
+Define the symmetric and skew parts of $\L$ as
+\[
+\begin{array}{l}
+\D = \frac{1}{2}(\L + \L^T)\\
+\W = \frac{1}{2}(\L - \L^T)\tag{11.2}
+\end{array}
+\]
+So,
+\[
+	\L = \D + \W\tag{11.3}
+\]
+Thus, the Taylor expansion becomes
+\[
+	\v(\x) - \v(\y) = \W(\y)(\x - \y) + \D(\y)(\x - \y) + o(|\x - \y|)
+\]
+We then call $\W$ \textbf{spin} and $\D$ \textbf{dilation} (book calls stretching) and the \textbf{spin axis} at $(\y,t)$ is the subspace $\curly{L}$ of $\a$ such that
+\[
+	\W(\y,t)\a = \boldsymbol{0}\tag{11.4}
+\]
+\begin{remark}
+	$\D$ and $\W$ map spatial vectors to spatial vectors.
+\end{remark}
+
+Relating these in with left and right stretch tensors gives:
+\[
+	\L = \dot{\R}\R^T + \R\dot{\U}\U^{-1}\R^T\tag{11.6}
+\]
+
+We know that $\dot{\R}\R^T$ is skew, therefore we have
+\[
+\begin{array}{l}
+	\D = \R[\sym(\dot{\U}\U\inv)]\R^T\\
+	\W = \dot{\R}\R^T + \R[\skw(\dot{\U}\U\inv)]\R^T\tag{11.8}
+\end{array}
+\]
+$\W$ is the sum of rotational spin and stretch spin:
+\[
+\begin{array}{l}
+	\W = \W_{rot} + \W_{str}\\
+	\W_{rot} = \dot{\R}\R^T \qquad \W_{str} = \R[\skw(\dot{\U}\U\inv)]\R^T
+\end{array}
+\]
+
+Now,
+\[
+	\F^T\D\F = \dot{\E}\tag{11.10}
+\]
+relates the dilation $\D$ and the time-derivative of the Green - St. Venant strain $\E$.
+
+\subsection{Properties of D}
+Define a unit vector$\e$. Define $\delta_l(\tau)$ as the distance at time $\tau$ between the particle paths that pass through the points $\x$ and $\x + l\e$ at a reference time $\t$. Another way: $\x$, $\x +l\e$, and time $t$ specify two particle paths. Then $\delta_l(\tau)$ is the distance between those paths at some time $\tau$.
+Then,
+\[
+	\lim\limits_{l\to 0}\frac{\dot{\delta}_l(t)}{\delta_l(t)} = \e\cdot\D(\x,t)\e\tag{11.12}
+\]
+\begin{remark}
+	$\D$ characterizes the rate at which deforming fibers are stretched
+\end{remark}
+
+Now consider angles:
+Define $\X$, $\Y_1$, and $\Y_2$ as material points occupying spatial points $\x$, $\y_1= \x + l\e_1$, and $\y_2 = \x + l\e_2$ at time $t$. Then, let the angle $\theta_l(\tau)$ between deformed fibers
+\[
+	\u_\alpha(\tau) = \Chi (\Y_\alpha, \tau ) - \Chi (\X, \tau ), \qquad \alpha = 1,2
+\]
+ie
+\[
+	\theta_l(\tau) = \angle(\Chi(\Y_1, \tau), \Chi(\X, \tau), \Chi(\Y_2, \tau))
+\]
+at time $t$.
+
+After lots of angle math:
+\begin{remark}
+	$\D$ characterizes rates at which angles between deforming fibers change
+\end{remark}
+
+\[
+	\lim\limits_{l\to 0}\dot{\theta}_l(t) = -2\e_1\cdot\D(\x,t)\e_2
+\]
+
+\subsection{Stretching and Spin Using the Current Configuration as Reference}
+We can express the motion in terms of the spatial point $\x$ and the time $\tau$:
+\[
+	\boldsymbol{\xi} \eqdef \Chi(\Chi\inv(\x,t),\tau) = \Chi_{(t)}(\x,\tau)\tag{11.13}
+\]
+$\bs{\xi}$ is the spatial point occupied at time $\tau$ by the material point that occupies the spatial point $\X$ at time $\t$.
+The \textbf{relative deformation gradient} is the
+\[
+	\F_{(t)}(\x,\tau) = \del\Chi_{(t)}(\x,\tau)\tag{11.14}
+\]
+Note
+\[
+	\Chi(\X,\tau) = \Chi_{(t)}(\Chi(\X,t),\tau)\tag{11.15}
+\]
+
+
+
+
 
 
 Through 97
