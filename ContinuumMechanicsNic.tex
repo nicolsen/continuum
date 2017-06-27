@@ -728,10 +728,83 @@ Note
 	\Chi(\X,\tau) = \Chi_{(t)}(\Chi(\X,t),\tau)\tag{11.15}
 \]
 
+Then we have
+\[
+	\F_{\tau} = \F_{(t)}(\tau)\F(t)\tag{11.16}
+\]
+so,
+\[
+	\F_{(t)}(t) = \I\tag{11.17}
+\]
 
+Then, as with the first deformation gradient, we may take a polar decomposition:
+\[
+	\F_{(t)} = \R_{(t)}\U_{(t)} = \V_{(t)}\R_{(t)}\tag{11.18}
+\]
+As expected, $\R_{(t)}$ is the \textbf{relative rotation}, $\U_{(t)}$ and $\V_{(t)}$ are the \textbf{relative stretch tensors}, and the \textbf{relative Cauchy-Green tensors} are $\C_{(t)} = \U_{(t)}^2$ and $\B_{(t)} = \V_{(t)}^2$.
 
+Thus,
+\[
+	\R_{(t)}(t) = \U_{(t)}(t) = \V_{(t)}(t) = \C_{(t)}(t) = \B_{(t)}(t) = \I\tag{11.19}
+\]
 
+Then for the velocity gradient we have:
+\[
+	\L(\x,t) = \left.\pd{\F_{(t)}(\x,\tau)}{\tau}\right|_{\tau = t}\tag{11.20}
+\]
+and
+\[
+	\L(\x,t) = \left.\pd{\U_{(t)}(\x,\tau)}{\tau}\right|_{\tau = t} + \left.\pd{\R_{(t)}(\x,\tau)}{\tau}\right|_{\tau = t}\tag{11.21}
+\]
+are the symmetric and skew parts of $\L$, respectively.
 
+Thus,
+\[
+	\D(\x,t) = \left.\pd{\U_{(t)}(\x,\tau)}{\tau}\right|_{\tau = t}\qquad and \qquad \W(\x,t) = \left.\pd{\R_{(t)}(\x,\tau)}{\tau}\right|_{\tau = t}\tag{11.22}
+\]
 
-Through 97
+\section{Material and Spatial Tensor Fields. Pullback and Pushforward Operations}
+\subsection{Material and Spatial Tensor Fields}
+\begin{enumerate}
+	\item $\G$ is a \textbf{spatial tensor field} if, pointwise, $\G$ maps spatial vectors to spatial vectors
+	\item $\G$ is a \textbf{material tensor field} if, pointwise, $\G$ maps material vectors to material vectors
+	\item $\G$ is a \textbf{mixed tensor field} if, pointwise, $\G$ maps either spatial vectors to material vectors of material vectors to spatial vectors
+\end{enumerate}
+
+\begin{remark}
+	$\V,\B,\L,\D,$ and $\W$ are spatial tensor fields\\
+	$\U,\C,$ and $\E$ are material tensor fields\\
+	$\F$ and $\R$ are mixed tensor fields
+\end{remark}
+\subsection{Pullback and Pushforward Operations}
+A \textbf{pullback} of a spatial tensor field $\G$ is an operation which transforms $\G$ into a tensor mapping material to material.\\
+EX:
+\[
+\mathbb{P}[\G]\eqdef\F^T\G\F\tag{12.1}
+\]
+
+EX:
+\[
+\underline{\mathbb{P}}[\G]\eqdef\F\inv\G\F^{-T}\tag{12.2}
+\]
+
+Note that these pullbacks preserve the operations sym and skw:
+\[
+	\sym\bb{P}][\G] = \bb{P}[\sym\G] \qquad and \qquad \skw\bb{P}[\G]=\bb{P}[\skw\G]
+\]
+
+Note that the following pullbacks preserve trace:
+\[
+	\F\inv\G\F \qquad and \qquad \F^T\G\F^{-T}
+\]
+Since pullbacks are linear transformations from tensors to tensors, they many be viewed as fourth-order tensors.\\
+The following are pushforward operations:
+\[
+	\bb{P}\inv[\M] = \F^{-T}\M\F\inv \qquad and \qquad \underline{\bb{P}}\inv[\M] = \F\M\F^T \tag{12.5}
+\]
+
+An actual example is:
+\[
+	\bb{P}[\D] = \F^T\D\F = \dot{\E}
+\]
 \end{document}
