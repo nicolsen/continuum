@@ -25,7 +25,7 @@ where J is the volumetric Jacobian of the mapping $\Chi_t$ at $\X$.
 Region occupied by body $B$ at time $t$ is
 $$\curly{B}_t = \Chi_t(B)$$
 is the deformed body at time $t$.
-		
+
 \subsection{Convection of Sets with the Body} $A$ is a material set. Then \textbf{deforms to} $\curly{A}_t$ at time $t$. 
 $\curly{A}_t$ \textbf{convects with the body} if there is a set $A$ of material points such that
 $$\curly{A}_t = \Chi_t(A)$$ for all $t$.
@@ -807,4 +807,41 @@ An actual example is:
 \[
 	\bb{P}[\D] = \F^T\D\F = \dot{\E}
 \]
+
+\section{Modes of Evolution for Vector and Tensor Fields}
+\subsection{Vector and Tensor Fields that Convect with the Body}
+Recall, a spatial vector field $\f$ convects with the body if there is a time-independent material vector field $\f_R$ such that
+\[
+	\f(\x,t) = \F(\X,t)\f_R(\X)
+\]
+We will now call this \textbf{tangential convection}.
+We will call the following \textbf{normal convection}:
+\[
+	\f(\x,t) = \F\invt(\X,t)\f_R(\X)
+\]
+
+From our definition, $\f$ convects as a tangent if
+\[
+	\dotbar{\F\inv\f} = 0
+\]
+Thus, $\f$ convects as a tangent if and only if it satisfies
+\[
+	\dot{\f}=\L\f\tag{13.4}
+\]
+
+Similarly, $\f$ convects as a normal if and only if it satisfies
+\[
+	\dot{\f} = -\L^T\f\tag{13.6}
+\]
+If $\f$ convects as a tangent and $\g$ convects as a normal, then 
+\[
+	\dotbar{\f\cdot\g} = 0\tag{13.7}
+\]
+\subsubsection{Tangentially Convecting Basis and its Dual Basis. Covariant and Contravariant Components of Spatial Fields}
+Let $\lbrace \f_i\rbrace$ be a triad of spatial vectors fields which convect tangentially with associated material triad $\lbrace \m_i\rbrace$ such that 
+\[
+	\f_i = \F\m_i \qquad and \qquad \dot{m_i} = 0\tag{13.8}
+\]
+Then, $\lbrace\f_i\rbrace$ is a\textbf{tangentially convecting basis} and $\lbrace\m_i\rbrace$ is the associated \textbf{material basis}.
+read to 109
 \end{document}
